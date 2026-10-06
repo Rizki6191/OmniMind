@@ -1,0 +1,174 @@
+name: cURL
+category: Web Requests
+function: HTTP requests, API testing, data transfer
+description: >
+  cURL is a command-line tool for making HTTP and HTTPS requests.
+  It is commonly used for testing APIs, sending and receiving data,
+  downloading files, and debugging web requests.
+
+usages:
+  - name: Send a GET request
+    command: "curl https://example.com"
+    explanation: >
+      Sends a GET request to the target URL and displays the response body.
+
+  - name: Show response headers
+    command: "curl -I https://example.com"
+    explanation: >
+      Sends a HEAD request and displays the response headers without
+      downloading the response body.
+
+  - name: Show headers and response body
+    command: "curl -i https://example.com"
+    explanation: >
+      Displays both the HTTP response headers and the response body.
+
+  - name: Follow redirects
+    command: "curl -L https://example.com"
+    explanation: >
+      Follows HTTP redirects when the server responds with a redirect
+      such as 301 or 302.
+
+  - name: Send a POST request
+    command: "curl -X POST https://example.com/api/users"
+    explanation: >
+      Sends an HTTP POST request to the specified API endpoint.
+
+  - name: Send form data
+    command: 'curl -X POST -d "username=johndoe&password=secret" https://example.com/login'
+    explanation: >
+      Sends form data as part of a POST request.
+
+  - name: Send JSON data
+    command: "curl -X POST -H 'Content-Type: application/json' -d '{\"name\":\"John Doe\",\"age\":18}' https://example.com/api/users"
+    explanation: >
+      Sends JSON data to an API using the application/json content type.
+
+  - name: Send an authorization header
+    command: "curl -H 'Authorization: Bearer TOKEN' https://example.com/api/profile"
+    explanation: >
+      Adds an Authorization header containing a Bearer token to authenticate
+      the request.
+
+  - name: Send multiple headers
+    command: "curl -H 'Content-Type: application/json' -H 'Authorization: Bearer TOKEN' https://example.com/api/profile"
+    explanation: >
+      Sends multiple custom HTTP headers with the request.
+
+  - name: Use basic authentication
+    command: "curl -u 'johndoe:secret' https://example.com/api/profile"
+    explanation: >
+      Sends HTTP Basic Authentication credentials with the request.
+
+  - name: Download a file
+    command: "curl -O https://example.com/file.zip"
+    explanation: >
+      Downloads a file and saves it using the filename provided by the server.
+
+  - name: Download with a custom filename
+    command: "curl -o output.zip https://example.com/file.zip"
+    explanation: >
+      Downloads a file and saves it using the specified filename.
+
+  - name: Upload a file
+    command: "curl -X POST -F 'file=@document.pdf' https://example.com/upload"
+    explanation: >
+      Uploads a local file to an HTTP endpoint using multipart form data.
+
+  - name: Send query parameters
+    command: "curl 'https://example.com/api/users?page=1&limit=10'"
+    explanation: >
+      Sends query parameters as part of the request URL.
+
+  - name: Make a PUT request
+    command: "curl -X PUT -H 'Content-Type: application/json' -d '{\"name\":\"John Doe\"}' https://example.com/api/users/1"
+    explanation: >
+      Sends a PUT request to update an existing resource using JSON data.
+
+  - name: Make a PATCH request
+    command: "curl -X PATCH -H 'Content-Type: application/json' -d '{\"name\":\"John Doe\"}' https://example.com/api/users/1"
+    explanation: >
+      Sends a PATCH request to partially update an existing resource.
+
+  - name: Make a DELETE request
+    command: "curl -X DELETE https://example.com/api/users/1"
+    explanation: >
+      Sends a DELETE request to remove a resource from an API.
+
+  - name: Show request details
+    command: "curl -v https://example.com"
+    explanation: >
+      Displays detailed information about the request and response,
+      including connection details, request headers, and response headers.
+
+  - name: Show only the HTTP status code
+    command: "curl -s -o /dev/null -w '%{http_code}\n' https://example.com"
+    explanation: >
+      Suppresses the response body and prints only the HTTP status code.
+
+  - name: Save response to a file
+    command: "curl https://example.com/api/data -o response.json"
+    explanation: >
+      Saves the server response to a local file instead of displaying it
+      directly in the terminal.
+
+  - name: Set a custom User-Agent
+    command: "curl -A 'Mozilla/5.0' https://example.com"
+    explanation: >
+      Sends a custom User-Agent header to identify the client to the server.
+
+  - name: Set a connection timeout
+    command: "curl --connect-timeout 5 https://example.com"
+    explanation: >
+      Limits the time cURL waits to establish a connection to five seconds.
+
+  - name: Format JSON response
+    command: "curl -s https://example.com/api/users | jq"
+    explanation: >
+      Sends a request silently and pipes the JSON response to jq to make
+      JSON output easier to read.
+
+  - name: Ignore SSL certificate errors
+    command: "curl -k https://self-signed.badssl.com"
+    explanation: >
+      Disables SSL/TLS certificate verification for self-signed certificates or test servers.
+
+  - name: Send custom HTTP request method
+    command: "curl -X OPTIONS https://example.com/api/v1"
+    explanation: >
+      Sends an OPTIONS HTTP request to inspect allowed methods and CORS capabilities.
+
+  - name: Pass cookies with request
+    command: "curl -b 'session_id=xyz123' https://example.com/dashboard"
+    explanation: >
+      Sends HTTP cookie header data to maintain session authentication.
+
+  - name: Save response cookies to file
+    command: "curl -c cookies.txt -d 'user=admin&pass=123' https://example.com/login"
+    explanation: >
+      Saves set-cookie headers received from server into a local cookies file.
+
+  - name: Use proxy server
+    command: "curl -x http://127.0.0.1:8080 https://example.com"
+    explanation: >
+      Routes the HTTP request through an HTTP or SOCKS proxy server.
+
+  - name: Measure total request latency
+    command: "curl -s -w 'Time Total: %{time_total}s\n' -o /dev/null https://example.com"
+    explanation: >
+      Prints the exact time in seconds taken to complete the full HTTP transaction.
+
+  - name: Limit download speed bandwidth
+    command: "curl --limit-rate 500k -O https://example.com/largefile.iso"
+    explanation: >
+      Cap the transfer speed at 500 KB/s to prevent consuming all network bandwidth.
+
+  - name: Resume broken file download
+    command: "curl -C - -O https://example.com/largefile.iso"
+    explanation: >
+      Resumes an interrupted download from where it left off.
+
+  - name: Pass raw binary data in body
+    command: "curl -X POST --data-binary '@image.jpg' -H 'Content-Type: image/jpeg' https://example.com/upload"
+    explanation: >
+      Sends unencoded binary data directly in the HTTP request body.

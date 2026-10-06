@@ -1,0 +1,22 @@
+name: Wget
+category: Web Requests
+function: File downloading, recursive web mirroring, background transfer
+description: >
+  Wget is a free utility for non-interactive downloading of files from the web, supporting HTTP, HTTPS, and FTP protocols.
+
+usages:
+  - name: Download file
+    command: wget https://example.com/file.tar.gz
+    explanation: Downloads the specified file from the web server into current directory.
+
+  - name: Save as custom filename
+    command: wget -O custom.tar.gz https://example.com/file.tar.gz
+    explanation: Downloads the file and renames it locally to custom.tar.gz.
+
+  - name: Download in background
+    command: wget -b https://example.com/largefile.iso
+    explanation: Runs the download task in the background logging progress to wget-log.
+
+  - name: Resume download
+    command: wget -c https://example.com/largefile.iso
+    explanation: Resumes an incomplete or interrupted download.

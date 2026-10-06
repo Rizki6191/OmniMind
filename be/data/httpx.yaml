@@ -1,0 +1,22 @@
+name: Httpx
+category: Web Reconnaissance
+function: HTTP probe, status code check, title grabber, tech detection
+description: >
+  Httpx is a fast and multi-purpose HTTP toolkit that allows running multiple probes to inspect live web hosts.
+
+usages:
+  - name: Probe live hosts
+    command: cat subdomains.txt | httpx
+    explanation: Probes a list of subdomains to identify which hosts respond over HTTP/HTTPS.
+
+  - name: Fetch status codes
+    command: httpx -u https://example.com -status-code
+    explanation: Displays the HTTP status code returned by the target URL.
+
+  - name: Extract web title
+    command: httpx -l targets.txt -title
+    explanation: Extracts and displays page title tags for a list of URLs.
+
+  - name: Detect web technologies
+    command: httpx -u https://example.com -tech-detect
+    explanation: Identifies running web servers, frameworks, and CMS technologies.

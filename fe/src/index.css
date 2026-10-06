@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  color-scheme: light;
+  --color-bg: #fafaf8;
+  --color-surface: #ffffff;
+  --color-border: #dedfda;
+  --color-text: #20221f;
+  --color-text-muted: #686b64;
+  --color-accent: #242722;
+  --color-accent-hover: #41463b;
+}
+
+:root.dark, html.dark, .dark {
+  color-scheme: dark;
+  --color-bg: #141711;
+  --color-surface: #1d2019;
+  --color-border: #2e332a;
+  --color-text: #e5e7e2;
+  --color-text-muted: #9aa092;
+  --color-accent: #e5e7e2;
+  --color-accent-hover: #ffffff;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+}
+
+/* Krauq-style Button System (Sharp, Almost Square, 3px border-radius) */
+.btn-krauq {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.76rem;
+  font-weight: 500;
+  line-height: 1.4;
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
+  cursor: pointer;
+}
+
+.btn-krauq:hover {
+  border-color: var(--color-text-muted);
+  background: var(--color-bg);
+}
+
+.btn-krauq-primary {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 0.45rem 1rem;
+  font-size: 0.76rem;
+  font-weight: 500;
+  line-height: 1.4;
+  background: var(--color-accent);
+  color: #ffffff;
+  transition: background-color 0.18s ease;
+  cursor: pointer;
+}
+
+.dark .btn-krauq-primary, :root.dark .btn-krauq-primary {
+  background: #e5e7e2;
+  color: #141711;
+}
+
+.btn-krauq-primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.dark .btn-krauq-primary:hover, :root.dark .btn-krauq-primary:hover {
+  background: #ffffff;
+}
+
+/* Krauq Sharp Input System */
+.input-krauq {
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 0.45rem 0.75rem;
+  font-size: 0.78rem;
+  transition: border-color 0.18s ease;
+}
+
+.input-krauq:focus {
+  outline: none;
+  border-color: var(--color-text);
+}
+
+/* Krauq List Item & Row Dividers */
+.krauq-row {
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.85rem 0;
+  transition: background-color 0.15s ease;
+}
+
+.krauq-row:last-child {
+  border-bottom: none;
+}
+
+.krauq-row:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.dark .krauq-row:hover, :root.dark .krauq-row:hover {
+  background-color: rgba(255, 255, 255, 0.025);
+}
+
+/* Custom Minimal Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}

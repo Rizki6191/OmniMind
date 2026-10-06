@@ -1,0 +1,183 @@
+name: TShark
+category: Network Analysis
+function: Packet capture, protocol analysis, traffic filtering
+description: >
+  TShark is the command-line version of Wireshark used to capture and analyze
+  network packets. It supports protocol filtering, packet inspection,
+  statistics, and exporting captured traffic for further analysis.
+
+usages:
+  - name: List available interfaces
+    command: "tshark -D"
+    explanation: >
+      Lists the network interfaces available for packet capture and shows
+      their interface numbers.
+
+  - name: Capture packets from an interface
+    command: "sudo tshark -i eth0"
+    explanation: >
+      Captures packets from the eth0 network interface and displays them
+      in real time.
+
+  - name: Capture a specific number of packets
+    command: "sudo tshark -i eth0 -c 20"
+    explanation: >
+      Captures 20 packets from the eth0 interface and then stops automatically.
+
+  - name: Capture packets without resolving names
+    command: "sudo tshark -i eth0 -n"
+    explanation: >
+      Captures packets without converting IP addresses, ports, or other
+      identifiers into hostnames or service names.
+
+  - name: Capture only HTTP traffic
+    command: "sudo tshark -i eth0 -f 'tcp port 80'"
+    explanation: >
+      Captures traffic using TCP port 80, which is commonly used for HTTP.
+
+  - name: Capture only HTTPS traffic
+    command: "sudo tshark -i eth0 -f 'tcp port 443'"
+    explanation: >
+      Captures traffic using TCP port 443, which is commonly used for HTTPS.
+
+  - name: Filter packets by IP address
+    command: "sudo tshark -i eth0 -f 'host 192.168.1.10'"
+    explanation: >
+      Captures packets sent to or received from the specified IP address.
+
+  - name: Capture traffic from a specific IP
+    command: "sudo tshark -i eth0 -f 'src host 192.168.1.10'"
+    explanation: >
+      Captures packets where the specified IP address is the source.
+
+  - name: Capture traffic going to a specific IP
+    command: "sudo tshark -i eth0 -f 'dst host 192.168.1.10'"
+    explanation: >
+      Captures packets where the specified IP address is the destination.
+
+  - name: Display only HTTP packets
+    command: "tshark -r capture.pcapng -Y 'http'"
+    explanation: >
+      Reads a capture file and displays only packets identified as HTTP
+      traffic using a Wireshark display filter.
+
+  - name: Filter packets by IP
+    command: "tshark -r capture.pcapng -Y 'ip.addr == 192.168.1.10'"
+    explanation: >
+      Displays packets where the specified IP address is either the source
+      or destination.
+
+  - name: Filter packets by source IP
+    command: "tshark -r capture.pcapng -Y 'ip.src == 192.168.1.10'"
+    explanation: >
+      Displays packets originating from the specified IP address.
+
+  - name: Filter packets by destination IP
+    command: "tshark -r capture.pcapng -Y 'ip.dst == 192.168.1.10'"
+    explanation: >
+      Displays packets sent to the specified IP address.
+
+  - name: Filter TCP traffic
+    command: "tshark -r capture.pcapng -Y 'tcp'"
+    explanation: >
+      Displays only packets using the TCP protocol.
+
+  - name: Filter UDP traffic
+    command: "tshark -r capture.pcapng -Y 'udp'"
+    explanation: >
+      Displays only packets using the UDP protocol.
+
+  - name: Filter DNS traffic
+    command: "tshark -r capture.pcapng -Y 'dns'"
+    explanation: >
+      Displays packets associated with the DNS protocol.
+
+  - name: Filter packets by TCP port
+    command: "tshark -r capture.pcapng -Y 'tcp.port == 443'"
+    explanation: >
+      Displays TCP packets where either the source or destination port
+      is 443.
+
+  - name: Show packet details
+    command: "tshark -r capture.pcapng -V"
+    explanation: >
+      Displays detailed information for every decoded protocol layer
+      in the captured packets.
+
+  - name: Show packet bytes
+    command: "tshark -r capture.pcapng -x"
+    explanation: >
+      Displays the raw packet data together with the decoded packet
+      information.
+
+  - name: Read a capture file
+    command: "tshark -r capture.pcapng"
+    explanation: >
+      Reads packets from an existing capture file instead of capturing
+      traffic from a live interface.
+
+  - name: Save captured packets
+    command: "sudo tshark -i eth0 -w capture.pcapng"
+    explanation: >
+      Captures packets from the eth0 interface and saves them to a
+      PCAPNG file for later analysis.
+
+  - name: Capture traffic with a packet limit
+    command: "sudo tshark -i eth0 -c 100 -w capture.pcapng"
+    explanation: >
+      Captures 100 packets and saves them to a PCAPNG file.
+
+  - name: Show protocol hierarchy
+    command: "tshark -r capture.pcapng -z io,phs"
+    explanation: >
+      Displays a protocol hierarchy showing the protocols found in the
+      capture and their relative packet counts.
+
+  - name: Show conversation statistics
+    command: "tshark -r capture.pcapng -z conv,ip"
+    explanation: >
+      Displays IP conversation statistics, including traffic exchanged
+      between communicating hosts.
+
+  - name: Extract HTTP request information
+    command: "tshark -r capture.pcapng -Y 'http.request' -T fields -e ip.src -e http.host -e http.request.uri"
+    explanation: >
+      Extracts the source IP, HTTP host, and requested URI from packets
+      containing HTTP requests.
+
+  - name: Extract DNS queries
+    command: "tshark -r capture.pcapng -Y 'dns.flags.response == 0' -T fields -e ip.src -e dns.qry.name"
+    explanation: >
+      Extracts the source IP address and queried domain name from
+      DNS query packets.
+
+  - name: Export selected fields as CSV
+    command: "tshark -r capture.pcapng -T fields -E header=y -E separator=, -e frame.number -e ip.src -e ip.dst -e tcp.srcport -e tcp.dstport"
+    explanation: >
+      Extracts selected packet fields and formats them as comma-separated
+      values for further analysis.
+
+  - name: Filter TCP SYN flags (connection attempts)
+    command: "tshark -r capture.pcapng -Y 'tcp.flags.syn == 1 && tcp.flags.ack == 0'"
+    explanation: >
+      Filters packets to show only new TCP SYN connection requests.
+
+  - name: Capture traffic on all interfaces
+    command: "sudo tshark -i any"
+    explanation: >
+      Captures network traffic simultaneously across all available system interfaces.
+
+  - name: Filter HTTP response status codes
+    command: "tshark -r capture.pcapng -Y 'http.response.code >= 400'"
+    explanation: >
+      Displays HTTP packets where the server returned a 4xx client or 5xx server error code.
+
+  - name: Extract TLS server names (SNI)
+    command: "tshark -r capture.pcapng -Y 'tls.handshake.extensions_server_name' -T fields -e tls.handshake.extensions_server_name"
+    explanation: >
+      Extracts domain names requested in HTTPS TLS Client Hello SNI extensions.
+
+  - name: Display top IP talkers (endpoints summary)
+    command: "tshark -r capture.pcapng -z endpoints,ip"
+    explanation: >
+      Prints a statistical summary table of total bytes and packets sent per IP address.

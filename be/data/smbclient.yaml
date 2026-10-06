@@ -1,0 +1,22 @@
+name: Smbclient
+category: Active Directory & SMB
+function: FTP-like SMB/CIFS client command-line tool
+description: >
+  Smbclient is a client that can 'talk' to an SMB/CIFS server. It offers an interface similar to that of the ftp program.
+
+usages:
+  - name: List shares anonymously
+    command: smbclient -L //192.168.1.10 -N
+    explanation: Lists available SMB network shares without requiring a password (-N).
+
+  - name: Connect to share
+    command: smbclient //192.168.1.10/public -U guest
+    explanation: Connects to the /public share using guest username.
+
+  - name: Connect with password
+    command: smbclient //192.168.1.10/documents -U admin%password123
+    explanation: Connects to /documents share with admin username and explicit password.
+
+  - name: Execute single command
+    command: smbclient //192.168.1.10/public -N -c "ls"
+    explanation: Connects to share, runs ls directory command, and disconnects immediately.

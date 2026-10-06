@@ -1,0 +1,175 @@
+name: Nmap
+category: Network Scanning
+function: Network discovery, port scanning, service detection
+description: >
+  Nmap is a network scanning tool used to discover hosts, identify open ports,
+  detect running services and their versions, and identify the operating system
+  of a target.
+
+usages:
+  - name: Basic port scan
+    command: nmap 192.168.1.10
+    explanation: >
+      Scans the target for commonly used TCP ports and shows which ports are open.
+
+  - name: Scan all TCP ports
+    command: nmap -p- 192.168.1.10
+    explanation: >
+      Scans all 65,535 TCP ports on the target instead of only the most common ports.
+
+  - name: Detect services and versions
+    command: nmap -sV 192.168.1.10
+    explanation: >
+      Detects the services running on open ports and attempts to identify their
+      software names and versions.
+
+  - name: Detect the operating system
+    command: sudo nmap -O 192.168.1.10
+    explanation: >
+      Attempts to identify the operating system of the target using TCP/IP
+      fingerprinting techniques.
+
+  - name: Scan all ports with version detection
+    command: nmap -p- -sV 192.168.1.10
+    explanation: >
+      Scans all TCP ports and detects the services and versions running on
+      the discovered open ports.
+
+  - name: Service and OS detection
+    command: sudo nmap -sV -O 192.168.1.10
+    explanation: >
+      Detects running services and their versions while also attempting to
+      identify the target operating system.
+
+  - name: Aggressive scan
+    command: sudo nmap -A 192.168.1.10
+    explanation: >
+      Enables several advanced detection features, including OS detection,
+      version detection, default scripts, and traceroute.
+
+  - name: Scan a specific port
+    command: nmap -p 80 192.168.1.10
+    explanation: >
+      Scans only TCP port 80 to check whether the HTTP service is accessible.
+
+  - name: Scan multiple specific ports
+    command: nmap -p 22,80,443 192.168.1.10
+    explanation: >
+      Scans only the specified ports, such as SSH, HTTP, and HTTPS.
+
+  - name: Scan a port range
+    command: nmap -p 1-1000 192.168.1.10
+    explanation: >
+      Scans TCP ports from 1 through 1000 on the target.
+
+  - name: Fast scan
+    command: nmap -F 192.168.1.10
+    explanation: >
+      Performs a faster scan using Nmap's list of commonly used ports.
+
+  - name: Host discovery
+    command: nmap -sn 192.168.1.10
+    explanation: >
+      Checks whether the target is online without performing a port scan.
+
+  - name: Scan a local network
+    command: nmap -sn 192.168.1.0/24
+    explanation: >
+      Discovers active hosts on the local /24 network without scanning their ports.
+
+  - name: Default script scan
+    command: nmap -sC 192.168.1.10
+    explanation: >
+      Runs Nmap's default NSE scripts to gather additional information about
+      the target and its services.
+
+  - name: Save scan results
+    command: nmap -oN nmap-scan.txt 192.168.1.10
+    explanation: >
+      Saves the scan results as a human-readable text file named nmap-scan.txt.
+
+  - name: Scan with detailed output
+    command: nmap -sC -sV 192.168.1.10
+    explanation: >
+      Runs the default NSE scripts and detects service versions to gather
+      more detailed information about the target.
+
+  - name: Scan UDP ports
+    command: sudo nmap -sU 192.168.1.10
+    explanation: >
+      Scans for open UDP services such as DNS, DHCP, and SNMP on the target.
+
+  - name: Fast UDP scan
+    command: sudo nmap -sU -F 192.168.1.10
+    explanation: >
+      Scans only the top 100 most common UDP ports to save time.
+
+  - name: TCP SYN stealth scan
+    command: sudo nmap -sS 192.168.1.10
+    explanation: >
+      Performs a stealthy SYN scan without completing full TCP connections.
+
+  - name: TCP Connect scan
+    command: nmap -sT 192.168.1.10
+    explanation: >
+      Establishes full TCP connections with target ports (used when root privileges are absent).
+
+  - name: Exclude specific hosts from subnet scan
+    command: nmap 192.168.1.0/24 --exclude 192.168.1.1
+    explanation: >
+      Scans the subnet while excluding a specific router or server IP address.
+
+  - name: Read targets from a text file
+    command: nmap -iL targets.txt
+    explanation: >
+      Reads a list of target IP addresses or domain names from a text file.
+
+  - name: Output scan results in XML format
+    command: nmap -oX scan_results.xml 192.168.1.10
+    explanation: >
+      Saves scan results into XML format for importing into parser tools.
+
+  - name: Output scan results in all formats
+    command: nmap -oA my_scan 192.168.1.10
+    explanation: >
+      Saves scan results in normal, XML, and grepable formats simultaneously.
+
+  - name: Scan for vulns using NSE scripts
+    command: nmap --script vuln 192.168.1.10
+    explanation: >
+      Runs known vulnerability detection scripts against open services on the target.
+
+  - name: Scan HTTP web server scripts
+    command: nmap --script http-enum 192.168.1.10
+    explanation: >
+      Enumerates common web directories and management pages on web servers.
+
+  - name: Scan target behind firewall using fragmentation
+    command: sudo nmap -f 192.168.1.10
+    explanation: >
+      Splits IP packets into tiny fragments to bypass simple packet inspection firewalls.
+
+  - name: Spoof source IP address
+    command: sudo nmap -S 192.168.1.254 -e eth0 192.168.1.10
+    explanation: >
+      Sends scan packets with a fake source IP address via a specific network interface.
+
+  - name: Detect traceroute path to target
+    command: nmap --traceroute 192.168.1.10
+    explanation: >
+      Traces the network path and hop count to the target host during scanning.
+
+  - name: Set scan timing template
+    command: nmap -T4 192.168.1.10
+    explanation: >
+      Uses aggressive timing template (T4) to speed up scans on reliable networks.
+
+  - name: Show reason for port state
+    command: nmap --reason 192.168.1.10
+    explanation: >
+      Displays the exact TCP packet response type that determined why a port is open or closed.
+
+  - name: Fast ping sweep without port scan
+    command: nmap -sn -PR 192.168.1.0/24
+    explanation: >
+      Uses ARP requests for rapid local network host discovery without port scanning.

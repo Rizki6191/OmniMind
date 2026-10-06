@@ -1,0 +1,22 @@
+name: Nuclei
+category: Vulnerability Scanning
+function: Fast and customizable vulnerability scanner based on YAML templates
+description: >
+  Nuclei is used to send requests across targets based on templates leading to zero false positives and fast scanning over thousands of hosts.
+
+usages:
+  - name: Basic target scan
+    command: nuclei -u https://example.com
+    explanation: Scans target website using default community vulnerability templates.
+
+  - name: Scan specific severity
+    command: nuclei -u https://example.com -severity critical,high
+    explanation: Runs only critical and high severity vulnerability check templates.
+
+  - name: Scan list of URLs
+    command: nuclei -l urls.txt -o results.txt
+    explanation: Scans multiple target URLs from a list file and saves findings to results.txt.
+
+  - name: Custom template tags
+    command: nuclei -u https://example.com -t cves/ -tags cve
+    explanation: Runs vulnerability checks specific to known CVE identifiers.

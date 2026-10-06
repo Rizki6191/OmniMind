@@ -1,0 +1,22 @@
+name: Netdiscover
+category: Network Scanning
+function: Active/passive ARP reconnaissance tool
+description: >
+  Netdiscover is an active/passive address reconnaissance tool mainly developed for wireless networks without DHCP servers.
+
+usages:
+  - name: Active scan interface
+    command: sudo netdiscover -i eth0 -r 192.168.1.0/24
+    explanation: Actively sends ARP requests across eth0 interface to find live hosts.
+
+  - name: Passive sniffing mode
+    command: sudo netdiscover -p -i eth0
+    explanation: Passively listens for ARP packets on network without sending any packets.
+
+  - name: Fast scan sleep time
+    command: sudo netdiscover -i eth0 -r 10.0.0.0/16 -s 10
+    explanation: Adjusts sleep time between ARP requests to 10 milliseconds.
+
+  - name: Output results to file
+    command: sudo netdiscover -r 192.168.1.0/24 -P
+    explanation: Prints results in parseable format suitable for logging to text file.

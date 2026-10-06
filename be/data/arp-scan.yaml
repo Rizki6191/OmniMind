@@ -1,0 +1,22 @@
+name: Arp-scan
+category: Network Scanning
+function: ARP packet scanner, local network host discovery
+description: >
+  Arp-scan sends ARP requests to target hosts on the local Ethernet network and displays returned responses.
+
+usages:
+  - name: Scan local network
+    command: sudo arp-scan --localnet
+    explanation: Scans all IP addresses on the local network interface using ARP requests.
+
+  - name: Scan specific interface
+    command: sudo arp-scan --interface=eth0 192.168.1.0/24
+    explanation: Sends ARP requests across eth0 interface to map local hosts.
+
+  - name: Retry attempts
+    command: sudo arp-scan --retry=5 --localnet
+    explanation: Retries sending ARP requests 5 times to detect quiet or lossy hosts.
+
+  - name: Read targets from file
+    command: sudo arp-scan --file=ip_list.txt
+    explanation: Scans IP targets specified inside ip_list.txt file.

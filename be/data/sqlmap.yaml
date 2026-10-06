@@ -1,0 +1,22 @@
+name: Sqlmap
+category: Web Vulnerability Scanning
+function: Automatic SQL injection detection and exploitation
+description: >
+  Sqlmap is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws.
+
+usages:
+  - name: Scan target URL parameter
+    command: sqlmap -u "http://example.com/item.php?id=1" --batch
+    explanation: Automatically tests the target parameter for SQL injection vulnerabilities.
+
+  - name: List databases
+    command: sqlmap -u "http://example.com/item.php?id=1" --dbs
+    explanation: Enumerate database names available on the target database server.
+
+  - name: Dump table contents
+    command: sqlmap -u "http://example.com/item.php?id=1" -D app_db -T users --dump
+    explanation: Dumps all rows and columns from the users table in app_db.
+
+  - name: Test HTTP POST request file
+    command: sqlmap -r request.txt -p username
+    explanation: Parses an HTTP POST request saved in request.txt and tests the username parameter.

@@ -1,0 +1,22 @@
+name: Masscan
+category: Network Scanning
+function: Ultra-fast IP port scanner, internet-scale scanning
+description: >
+  Masscan is an extremely fast port scanner capable of scanning the entire Internet in under 6 minutes.
+
+usages:
+  - name: Fast port scan
+    command: masscan 192.168.1.0/24 -p80,443
+    explanation: Scans ports 80 and 443 across the entire /24 subnet at high speed.
+
+  - name: Set transmit rate
+    command: masscan 10.0.0.0/8 -p80 --rate 10000
+    explanation: Limits packet transmission rate to 10,000 packets per second.
+
+  - name: Scan all ports
+    command: masscan 192.168.1.10 -p0-65535 --rate 1000
+    explanation: Scans all 65,535 TCP ports on target host.
+
+  - name: Save output to JSON
+    command: masscan 192.168.1.0/24 -p80 -oJ scan.json
+    explanation: Saves scan results in structured JSON format.

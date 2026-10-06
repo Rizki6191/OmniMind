@@ -1,0 +1,22 @@
+name: Traceroute
+category: Network Diagnostic
+function: Network path tracing, hop detection, latency diagnosis
+description: >
+  Traceroute tracks the path that network packets take from your computer to a destination host, displaying every router hop along the way.
+
+usages:
+  - name: Basic traceroute
+    command: traceroute example.com
+    explanation: Traces the network route to example.com showing router IP addresses and response times.
+
+  - name: Disable DNS resolution
+    command: traceroute -n example.com
+    explanation: Displays router IP addresses without resolving their domain hostnames to speed up output.
+
+  - name: Use ICMP echo requests
+    command: traceroute -I example.com
+    explanation: Uses ICMP Echo requests instead of default UDP packets to trace the path.
+
+  - name: Specify max hops
+    command: traceroute -m 15 example.com
+    explanation: Limits the maximum number of network hops traced to 15.

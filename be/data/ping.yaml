@@ -1,0 +1,22 @@
+name: Ping
+category: Network Diagnostic
+function: Network connectivity check, round-trip latency testing
+description: >
+  Ping measures network round-trip time and packet loss between the source machine and a target host using ICMP Echo requests.
+
+usages:
+  - name: Basic ping
+    command: ping example.com
+    explanation: Continuously sends ICMP echo requests to the target host.
+
+  - name: Limit packet count
+    command: ping -c 4 192.168.1.1
+    explanation: Stops automatically after sending 4 ICMP echo request packets.
+
+  - name: Set ping interval
+    command: ping -i 2 example.com
+    explanation: Waits 2 seconds between sending each ping request packet.
+
+  - name: Set packet size
+    command: ping -s 1000 example.com
+    explanation: Sends ICMP echo requests with a custom payload size of 1000 bytes.

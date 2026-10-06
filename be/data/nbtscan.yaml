@@ -1,0 +1,22 @@
+name: Nbtscan
+category: Network Scanning
+function: NetBIOS name server scanner
+description: >
+  Nbtscan is a program for scanning IP networks for NetBIOS name information. It sends NetBIOS status queries to target IP addresses.
+
+usages:
+  - name: Scan subnet
+    command: nbtscan 192.168.1.0/24
+    explanation: Scans local network IP range for active NetBIOS hosts and workgroups.
+
+  - name: Scan IP range
+    command: nbtscan 192.168.1.1-250
+    explanation: Queries NetBIOS names for IP range 192.168.1.1 through 192.168.1.250.
+
+  - name: Verbose output
+    command: nbtscan -v 192.168.1.10
+    explanation: Displays detailed NetBIOS service dump for target host.
+
+  - name: Read targets from file
+    command: nbtscan -f hosts.txt
+    explanation: Reads IP addresses from hosts.txt and scans their NetBIOS names.

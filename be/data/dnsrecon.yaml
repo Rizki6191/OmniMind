@@ -1,0 +1,22 @@
+name: Dnsrecon
+category: DNS Lookup
+function: DNS enumeration, zone transfer check, PTR record lookup
+description: >
+  DNSRecon is a Python script used to perform DNS enumeration, checking NS records, MX records, zone transfers, and reverse IP lookups.
+
+usages:
+  - name: Standard domain enum
+    command: dnsrecon -d example.com
+    explanation: Performs standard DNS enumeration querying NS, A, AAAA, MX, and SOA records.
+
+  - name: Check zone transfer
+    command: dnsrecon -d example.com -t axfr
+    explanation: Tests all domain NS servers for vulnerable AXFR zone transfers.
+
+  - name: Reverse lookup range
+    command: dnsrecon -r 192.168.1.1-192.168.1.254
+    explanation: Performs reverse DNS PTR record lookup across an IP range.
+
+  - name: Save report to XML
+    command: dnsrecon -d example.com --xml dns_report.xml
+    explanation: Saves enumeration findings into an XML file.

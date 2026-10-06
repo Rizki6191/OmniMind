@@ -1,0 +1,22 @@
+name: WhatWeb
+category: Web Reconnaissance
+function: Next-generation web scanner, tech stack identification
+description: >
+  WhatWeb identifies web technologies including content management systems (CMS), blogging platforms, statistic/analytics packages, JavaScript libraries, and web servers.
+
+usages:
+  - name: Basic scan
+    command: whatweb example.com
+    explanation: Identifies CMS, web server software, and JS libraries running on target domain.
+
+  - name: Aggressive scan
+    command: whatweb -a 3 example.com
+    explanation: Performs aggressive plugin probes to reveal hidden technology version numbers.
+
+  - name: Scan subnet
+    command: whatweb 192.168.1.0/24
+    explanation: Scans all IP addresses in the subnet to identify running web technologies.
+
+  - name: Output JSON
+    command: whatweb example.com --log-json=results.json
+    explanation: Saves technology detection results into JSON format.

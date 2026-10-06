@@ -1,0 +1,23 @@
+name: Dig
+category: DNS Lookup
+function: DNS lookup utility, domain name resolution, record querying
+description: >
+  Dig (Domain Information Groper) is a flexible command-line tool for querying DNS name servers.
+  It is widely used by network administrators for troubleshooting DNS problems and inspecting domain records.
+
+usages:
+  - name: Basic domain query
+    command: dig example.com
+    explanation: Performs a standard DNS lookup for A records of the target domain.
+
+  - name: Query specific record type (MX)
+    command: dig example.com MX
+    explanation: Queries the mail exchange (MX) records for the domain.
+
+  - name: Short answer mode
+    command: dig example.com +short
+    explanation: Displays only the resolved IP address or record value without headers.
+
+  - name: Query using specific DNS server
+    command: dig @8.8.8.8 example.com
+    explanation: Sends the DNS query to Google's public DNS server (8.8.8.8).

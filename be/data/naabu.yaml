@@ -1,0 +1,22 @@
+name: Naabu
+category: Network Scanning
+function: Fast port scanner focused on reliability and simplicity
+description: >
+  Naabu is a port scanning tool written in Go that allows enumerating open ports on hosts in a fast and reliable manner.
+
+usages:
+  - name: Scan host
+    command: naabu -host 192.168.1.10
+    explanation: Scans top 100 ports on target host.
+
+  - name: Scan all ports
+    command: naabu -host 192.168.1.10 -p -
+    explanation: Scans all 65,535 TCP ports on target host.
+
+  - name: List input file
+    command: naabu -list hosts.txt
+    explanation: Reads multiple target hosts from hosts.txt and scans open ports.
+
+  - name: Pipe to httpx
+    command: naabu -host example.com -silent | httpx
+    explanation: Pipes discovered open ports directly into httpx to probe active HTTP web services.

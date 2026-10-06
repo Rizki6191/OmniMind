@@ -1,0 +1,22 @@
+name: Amass
+category: OSINT & Subdomain Discovery
+function: Network mapping, attack surface discovery
+description: >
+  OWASP Amass performs network mapping of attack surfaces and external asset discovery using open source intelligence (OSINT) and active reconnaissance techniques.
+
+usages:
+  - name: Passive subdomain enum
+    command: amass enum -passive -d example.com
+    explanation: Gathers subdomains purely from passive OSINT data sources without contacting target.
+
+  - name: Active mapping scan
+    command: amass enum -active -d example.com
+    explanation: Performs active DNS queries and zone transfers to map domain architecture.
+
+  - name: Output results to file
+    command: amass enum -d example.com -o amass_subs.txt
+    explanation: Saves all discovered subdomains to amass_subs.txt.
+
+  - name: Visualize graph database
+    command: amass viz -dot -d example.com
+    explanation: Generates Graphviz DOT data visualization of target infrastructure mapping.

@@ -1,0 +1,22 @@
+name: Hashcat
+category: Password Security
+function: GPU-accelerated password recovery and hash cracking
+description: >
+  Hashcat is the world's fastest password recovery tool, utilizing GPU acceleration to crack hundreds of hash types.
+
+usages:
+  - name: MD5 dictionary attack
+    command: hashcat -m 0 -a 0 hashes.txt rockyou.txt
+    explanation: Cracks MD5 hashes (-m 0) using straight dictionary mode (-a 0) with rockyou.txt.
+
+  - name: NTLM hash cracking
+    command: hashcat -m 1000 -a 0 ntlm_hashes.txt wordlist.txt
+    explanation: Performs dictionary attack against Windows NTLM hashes (-m 1000).
+
+  - name: Mask attack (brute-force pattern)
+    command: hashcat -m 0 -a 3 hashes.txt ?l?l?l?l?d?d
+    explanation: Cracks 6-character passwords consisting of 4 lowercase letters followed by 2 digits.
+
+  - name: Benchmark GPU performance
+    command: hashcat -b
+    explanation: Benchmarks hash processing speeds across all supported algorithms on available GPUs.

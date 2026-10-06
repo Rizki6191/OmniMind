@@ -1,0 +1,23 @@
+name: Netcat
+category: Network Utility
+function: Port scanning, banner grabbing, network listening, relaying
+description: >
+  Netcat (nc) is a versatile networking utility that reads and writes data across network connections
+  using TCP or UDP protocols.
+
+usages:
+  - name: Connect to port
+    command: nc -v 192.168.1.1 80
+    explanation: Establishes a TCP connection to port 80 of the target host with verbose output.
+
+  - name: Listen on port
+    command: nc -l -p 4444
+    explanation: Starts a TCP listener on port 4444 waiting for incoming connections.
+
+  - name: Port scan range
+    command: nc -z -v 192.168.1.1 20-80
+    explanation: Scans ports 20 through 80 without sending data to test if they are open.
+
+  - name: Transfer file
+    command: nc -l -p 1234 > received.txt
+    explanation: Receives incoming data on port 1234 and saves it to a file.

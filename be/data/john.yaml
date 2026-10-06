@@ -1,0 +1,22 @@
+name: John the Ripper
+category: Password Security
+function: Offline password hash cracking
+description: >
+  John the Ripper is a fast offline password cracker designed to detect weak passwords across various hash formats.
+
+usages:
+  - name: Basic hash cracking
+    command: john hashes.txt
+    explanation: Cracks password hashes stored in hashes.txt using default wordlist and rules.
+
+  - name: Specify wordlist
+    command: john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt
+    explanation: Uses rockyou.txt dictionary file to perform dictionary attack on hashes.
+
+  - name: Show cracked passwords
+    command: john --show hashes.txt
+    explanation: Displays all previously cracked passwords associated with hashes.txt.
+
+  - name: Specify hash format
+    command: john --format=Raw-MD5 hashes.txt
+    explanation: Forces John to crack hashes assuming they are unsalted MD5 raw hashes.

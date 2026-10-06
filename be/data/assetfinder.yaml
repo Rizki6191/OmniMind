@@ -1,0 +1,22 @@
+name: Assetfinder
+category: OSINT & Subdomain Discovery
+function: Subdomain discovery tool using online sources
+description: >
+  Assetfinder is a simple tool written in Go to find domains and subdomains related to a given target domain.
+
+usages:
+  - name: Basic discovery
+    command: assetfinder example.com
+    explanation: Finds subdomains associated with example.com using public APIs.
+
+  - name: Subs only filter
+    command: assetfinder --subs-only example.com
+    explanation: Returns only subdomains that belong specifically to example.com.
+
+  - name: Save to file
+    command: assetfinder --subs-only example.com > assets.txt
+    explanation: Saves filtered subdomain results to assets.txt.
+
+  - name: Combine with httpx
+    command: assetfinder --subs-only example.com | httpx -title
+    explanation: Pipes discovered subdomains directly into httpx to read page titles.

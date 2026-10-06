@@ -1,0 +1,22 @@
+name: Tcpdump
+category: Network Analysis
+function: Packet analyzer, network traffic sniffer
+description: >
+  Tcpdump is a powerful command-line packet analyzer tool used to capture and inspect TCP/IP traffic passing over a network interface.
+
+usages:
+  - name: Capture on interface
+    command: tcpdump -i eth0
+    explanation: Captures and displays network packets live from the eth0 interface.
+
+  - name: Limit packet count
+    command: tcpdump -i eth0 -c 10
+    explanation: Captures 10 packets and exits automatically.
+
+  - name: Save to PCAP file
+    command: tcpdump -i eth0 -w output.pcap
+    explanation: Captures raw network packets and writes them directly to output.pcap file.
+
+  - name: Read PCAP file
+    command: tcpdump -r output.pcap
+    explanation: Reads and displays captured packets stored inside a PCAP file.

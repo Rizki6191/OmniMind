@@ -1,0 +1,22 @@
+name: Nikto
+category: Web Vulnerability Scanning
+function: Web server security scanner, CGI vulnerability detection
+description: >
+  Nikto is an open source web server scanner that tests web servers for dangerous files, outdated program versions, and security misconfigurations.
+
+usages:
+  - name: Basic web server scan
+    command: nikto -h http://example.com
+    explanation: Scans the target web server for common security misconfigurations and vulnerable scripts.
+
+  - name: Scan specific SSL port
+    command: nikto -h https://example.com -p 443
+    explanation: Performs an HTTPS security scan on port 443.
+
+  - name: Save report to HTML
+    command: nikto -h http://example.com -o report.html -F html
+    explanation: Saves the vulnerability scan report into an HTML file format.
+
+  - name: Scan multiple hosts
+    command: nikto -h hosts.txt
+    explanation: Runs vulnerability security scans sequentially on all hosts listed in hosts.txt.

@@ -1,0 +1,22 @@
+name: Ffuf
+category: Web Fuzzing
+function: Web directory brute-force, parameter fuzzing
+description: >
+  Ffuf (Fast web fuzzer) is a command-line tool used for web directory enumeration, file discovery, and parameter fuzzing.
+
+usages:
+  - name: Directory fuzzing
+    command: ffuf -u https://example.com/FUZZ -w wordlist.txt
+    explanation: Replaces FUZZ keyword with entries from wordlist.txt to find hidden directories.
+
+  - name: Filter HTTP status codes
+    command: ffuf -u https://example.com/FUZZ -w wordlist.txt -mc 200,301
+    explanation: Displays only results returning HTTP status 200 OK or 301 Redirect.
+
+  - name: Subdomain fuzzing
+    command: ffuf -u https://FUZZ.example.com -w subdomains.txt
+    explanation: Fuzzes Host header or domain prefix to discover virtual hosts and subdomains.
+
+  - name: POST parameter fuzzing
+    command: ffuf -u https://example.com/login -X POST -d "user=FUZZ&pass=admin" -w users.txt
+    explanation: Sends POST requests replacing FUZZ with usernames from a wordlist.

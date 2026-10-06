@@ -1,0 +1,22 @@
+name: Enum4linux
+category: Active Directory & SMB
+function: SMB enumeration, Windows/Samba information extraction
+description: >
+  Enum4linux is a tool for enumerating information from Windows and Samba systems via SMB protocols.
+
+usages:
+  - name: Full enumeration
+    command: enum4linux -a 192.168.1.10
+    explanation: Runs all enumeration checks including users, shares, groups, and password policy.
+
+  - name: List shares
+    command: enum4linux -S 192.168.1.10
+    explanation: Enumerates available SMB network shares on the target host.
+
+  - name: List users
+    command: enum4linux -U 192.168.1.10
+    explanation: Lists user accounts registered on target Windows/Samba system.
+
+  - name: Get password policy
+    command: enum4linux -P 192.168.1.10
+    explanation: Retrieves domain password policy settings (minimum password length, lockout threshold).

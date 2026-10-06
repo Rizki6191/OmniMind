@@ -1,0 +1,22 @@
+name: Rustscan
+category: Network Scanning
+function: Fast port scanner with Nmap integration
+description: >
+  RustScan is a modern, ultra-fast port scanner written in Rust that automatically pipes discovered ports directly into Nmap.
+
+usages:
+  - name: Basic scan
+    command: rustscan -a 192.168.1.10
+    explanation: Scans all 65,535 ports on the target host rapidly using RustScan defaults.
+
+  - name: Custom batch size
+    command: rustscan -a 192.168.1.10 -b 4500
+    explanation: Adjusts batch size to 4,500 parallel socket attempts for faster scanning.
+
+  - name: Specific port range
+    command: rustscan -a 192.168.1.10 -r 1-1000
+    explanation: Limits port scanning range to ports 1 through 1000.
+
+  - name: Pass arguments to Nmap
+    command: rustscan -a 192.168.1.10 -- -sV -sC
+    explanation: Pipes open ports found by RustScan into Nmap with version detection and default scripts.

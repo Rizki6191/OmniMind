@@ -1,0 +1,22 @@
+name: Gobuster
+category: Web Fuzzing
+function: Directory/file enumeration, DNS subdomain brute-forcing
+description: >
+  Gobuster is a tool used to brute-force URIs (directories and files) in web sites, DNS subdomains, and Virtual Host names.
+
+usages:
+  - name: Directory brute-force
+    command: gobuster dir -u https://example.com -w /usr/share/wordlists/dirb/common.txt
+    explanation: Scans target web server for hidden directories using a wordlist.
+
+  - name: File extension search
+    command: gobuster dir -u https://example.com -w wordlist.txt -x php,html,txt
+    explanation: Searches for files matching specified extensions (.php, .html, .txt).
+
+  - name: DNS subdomain brute-force
+    command: gobuster dns -d example.com -w subdomains.txt
+    explanation: Brute-forces DNS subdomains for target domain using a wordlist.
+
+  - name: Vhost enumeration
+    command: gobuster vhost -u https://example.com -w vhosts.txt
+    explanation: Searches for active Virtual Hosts on target IP web server.

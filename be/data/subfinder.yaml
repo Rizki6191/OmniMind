@@ -1,0 +1,22 @@
+name: Subfinder
+category: Web Reconnaissance
+function: Subdomain discovery, passive enumeration
+description: >
+  Subfinder is a subdomain discovery tool that returns valid subdomains for websites using passive online sources.
+
+usages:
+  - name: Basic subdomain search
+    command: subfinder -d example.com
+    explanation: Enumerates subdomains for example.com using passive public APIs and search engines.
+
+  - name: Save subdomains to file
+    command: subfinder -d example.com -o subdomains.txt
+    explanation: Saves all discovered subdomains into a text file.
+
+  - name: Silent output mode
+    command: subfinder -d example.com -silent
+    explanation: Outputs only the discovered subdomains without banner text or logs.
+
+  - name: Multiple target domains
+    command: subfinder -dL domains.txt
+    explanation: Discovers subdomains for multiple target domains listed in a file.

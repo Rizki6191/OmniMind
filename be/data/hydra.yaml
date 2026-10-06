@@ -1,0 +1,22 @@
+name: Hydra
+category: Authentication Testing
+function: Password brute-forcing, login attack tool
+description: >
+  Hydra is a parallelized login cracker which supports numerous protocols to perform rapid dictionary attacks against authentication services.
+
+usages:
+  - name: SSH brute-force
+    command: hydra -l admin -P passwords.txt ssh://192.168.1.10
+    explanation: Brute-forces the SSH login for user admin using a wordlist of passwords.
+
+  - name: FTP password crack
+    command: hydra -L users.txt -P passwords.txt ftp://192.168.1.10
+    explanation: Tests combinations of usernames and passwords against an FTP server.
+
+  - name: HTTP POST login attack
+    command: hydra -l admin -P pass.txt 192.168.1.10 http-post-form "/login.php:user=^USER^&pass=^PASS^:F=incorrect"
+    explanation: Performs dictionary attack on a web login form checking for failure message.
+
+  - name: RDP brute-force
+    command: hydra -l Administrator -P pass.txt rdp://192.168.1.10
+    explanation: Tests passwords against Windows Remote Desktop Protocol (RDP).
