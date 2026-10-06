@@ -43,6 +43,17 @@ func (h *ToolHandler) GetTools(c *gin.Context) {
 
 	// Catalog belum berubah.
 	if c.GetHeader("If-None-Match") == etag {
+		// Pastikan CORS tetap ada pada response 304.
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header(
+			"Access-Control-Allow-Methods",
+			"GET, POST, PUT, DELETE, OPTIONS",
+		)
+		c.Header(
+			"Access-Control-Allow-Headers",
+			"Content-Type, Authorization",
+		)
+
 		c.Status(http.StatusNotModified)
 		return
 	}
@@ -112,6 +123,7 @@ func (h *ToolHandler) GetTool(c *gin.Context) {
 // GET /api/categories
 func (h *ToolHandler) GetCategories(c *gin.Context) {
 	version, err := services.GetCatalogVersion(h.DB)
+
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": "gagal mengambil versi katalog",
@@ -129,6 +141,17 @@ func (h *ToolHandler) GetCategories(c *gin.Context) {
 
 	// Categories belum berubah.
 	if c.GetHeader("If-None-Match") == etag {
+		// Pastikan CORS tetap ada pada response 304.
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header(
+			"Access-Control-Allow-Methods",
+			"GET, POST, PUT, DELETE, OPTIONS",
+		)
+		c.Header(
+			"Access-Control-Allow-Headers",
+			"Content-Type, Authorization",
+		)
+
 		c.Status(http.StatusNotModified)
 		return
 	}
