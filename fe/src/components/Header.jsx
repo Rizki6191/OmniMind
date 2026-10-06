@@ -20,9 +20,9 @@ export const Header = ({ toolCount = 0 }) => {
           <img
             src="/oni1.png"
             alt="OmniMind"
-            className="w-8 h-8 object-contain"
+            className="w-15 h-15 object-contain"
           />
-          <span className="text-2xl font-bold tracking-tighter text-[#20221f] dark:text-[#e5e7e2] font-sans">
+          <span className="hidden sm:inline text-4xl font-bold tracking-tighter text-[#20221f] dark:text-[#e5e7e2] font-sans">
             omnimind
           </span>
         </Link>
@@ -40,7 +40,7 @@ export const Header = ({ toolCount = 0 }) => {
                 }`
               }
             >
-              <span>{item.label}</span>
+              <span className='text-lg'>{item.label}</span>
               {item.badge !== null && (
                 <span className="text-[10px] font-mono px-1 py-0.2 rounded-[2px] bg-[#dedfda]/60 dark:bg-[#2e332a]/60 text-[#686b64] dark:text-[#9aa092] font-bold">
                   {item.badge}
