@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -33,14 +32,10 @@ func (h *ToolHandler) GetTools(c *gin.Context) {
 		return
 	}
 
-	// ETag tetap digunakan sebagai penanda versi katalog.
-	etag := fmt.Sprintf(`"catalog-%d"`, version)
-
-	c.Header("ETag", etag)
-	c.Header(
-		"Cache-Control",
-		"private, max-age=0, must-revalidate",
-	)
+	// Jangan kirim ETag: edge Vercel membuat response 304 dari ETag,
+	// dan response 304 tersebut tidak menyertakan header CORS sehingga
+	// browser memblokir request. Versi katalog dikirim di body response.
+	c.Header("Cache-Control", "no-store")
 
 	var tools []models.Tool
 
@@ -65,7 +60,8 @@ func (h *ToolHandler) GetTools(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"data": tools,
+		"version": version,
+		"data":    tools,
 	})
 }
 
@@ -116,14 +112,8 @@ func (h *ToolHandler) GetCategories(c *gin.Context) {
 		return
 	}
 
-	// ETag tetap digunakan sebagai penanda versi categories.
-	etag := fmt.Sprintf(`"catalog-categories-%d"`, version)
-
-	c.Header("ETag", etag)
-	c.Header(
-		"Cache-Control",
-		"private, max-age=0, must-revalidate",
-	)
+	// Lihat GetTools: tanpa ETag agar edge tidak membalas 304 tanpa CORS.
+	c.Header("Cache-Control", "no-store")
 
 	var categories []string
 
@@ -141,6 +131,7 @@ func (h *ToolHandler) GetCategories(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"data": categories,
+		"version": version,
+		"data":    categories,
 	})
 }
