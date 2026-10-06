@@ -53,11 +53,18 @@ func runServer(cfg *config.Config) {
 
 	routes.Setup(router, db)
 
-	addr := fmt.Sprintf(":%s", cfg.AppPort)
+	// Vercel menyediakan PORT.
+	// Local development menggunakan APP_PORT.
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = cfg.AppPort
+	}
+
+	addr := fmt.Sprintf(":%s", port)
 
 	log.Printf(
-		"Tool Catalog API berjalan di http://localhost%s",
-		addr,
+		"Tool Catalog API berjalan di port %s",
+		port,
 	)
 
 	if err := router.Run(addr); err != nil {
