@@ -33,6 +33,7 @@ func (h *ToolHandler) GetTools(c *gin.Context) {
 		return
 	}
 
+	// ETag tetap digunakan sebagai penanda versi katalog.
 	etag := fmt.Sprintf(`"catalog-%d"`, version)
 
 	c.Header("ETag", etag)
@@ -40,23 +41,6 @@ func (h *ToolHandler) GetTools(c *gin.Context) {
 		"Cache-Control",
 		"private, max-age=0, must-revalidate",
 	)
-
-	// Catalog belum berubah.
-	if c.GetHeader("If-None-Match") == etag {
-		// Pastikan CORS tetap ada pada response 304.
-		c.Header("Access-Control-Allow-Origin", "*")
-		c.Header(
-			"Access-Control-Allow-Methods",
-			"GET, POST, PUT, DELETE, OPTIONS",
-		)
-		c.Header(
-			"Access-Control-Allow-Headers",
-			"Content-Type, Authorization",
-		)
-
-		c.Status(http.StatusNotModified)
-		return
-	}
 
 	var tools []models.Tool
 
@@ -88,6 +72,7 @@ func (h *ToolHandler) GetTools(c *gin.Context) {
 // GET /api/tools/:id
 func (h *ToolHandler) GetTool(c *gin.Context) {
 	id, err := strconv.ParseUint(c.Param("id"), 10, 64)
+
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": "ID tool tidak valid",
@@ -131,6 +116,7 @@ func (h *ToolHandler) GetCategories(c *gin.Context) {
 		return
 	}
 
+	// ETag tetap digunakan sebagai penanda versi categories.
 	etag := fmt.Sprintf(`"catalog-categories-%d"`, version)
 
 	c.Header("ETag", etag)
@@ -138,23 +124,6 @@ func (h *ToolHandler) GetCategories(c *gin.Context) {
 		"Cache-Control",
 		"private, max-age=0, must-revalidate",
 	)
-
-	// Categories belum berubah.
-	if c.GetHeader("If-None-Match") == etag {
-		// Pastikan CORS tetap ada pada response 304.
-		c.Header("Access-Control-Allow-Origin", "*")
-		c.Header(
-			"Access-Control-Allow-Methods",
-			"GET, POST, PUT, DELETE, OPTIONS",
-		)
-		c.Header(
-			"Access-Control-Allow-Headers",
-			"Content-Type, Authorization",
-		)
-
-		c.Status(http.StatusNotModified)
-		return
-	}
 
 	var categories []string
 
