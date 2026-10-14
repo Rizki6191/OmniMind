@@ -41,7 +41,7 @@ export const OverviewPage = ({ stats, tools, categories, loading }) => {
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-[#20221f] dark:text-[#e5e7e2] leading-[1.08]">
-            OmniMind Tool Catalog.<br />
+            Tool Catalogues.<br />
             <span className="text-[#686b64] dark:text-[#9aa092]">Command Reference Engine.</span>
           </h1>
         </div>
@@ -56,7 +56,7 @@ export const OverviewPage = ({ stats, tools, categories, loading }) => {
               to="/tools"
               className="btn-krauq-primary flex items-center justify-between w-full sm:w-auto"
             >
-              <span>Browse Catalog</span>
+              <span>Browse Catalogues</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
 
